@@ -18,6 +18,7 @@ module PaymentGateway
 
     class Configuration
       attr_accessor :public_key
+      attr_accessor :access_key
 
       def initialize
         @public_key = nil
