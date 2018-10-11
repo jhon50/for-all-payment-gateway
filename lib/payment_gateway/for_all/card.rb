@@ -2,26 +2,52 @@ module PaymentGateway
   module ForAll
     class Card < Base
 
-      def prepare(card_data)
-        request(:post, endpoint, body: build_card_body(card_data))
+      # {
+      #   "type": 1,
+      #   "cardholderName": "JOHN SMITH",
+      #   "cardNumber": "4024007126652816",
+      #   "expirationDate": "0119",
+      #   "securityCode": "123"
+      # }
+      def initialize(card_data)
+        @card_data = card_data
+      end
+
+      def get_nonce
+        request(:post, endpoint_nonce, body: build_card_body)
+      end
+
+      def get_token
+        response = get_nonce
+        request(:post, endpoint_token, body: build_get_token_body(response[:cardNonce]))
       end
 
       private
 
-      def endpoint
+      def endpoint_nonce
         API_URL + '/prepareCard'
       end
 
-      def build_card_body(card_data)
+      def endpoint_token
+        API_URL + '/createCardToken'
+      end
+
+      def build_card_body
         {
             "accessKey": access_key,
             "cardData": {
-                "type": 1,
-                "cardholderName": "JOHN SMITH",
-                "cardNumber": "4024007126652816",
-                "expirationDate": "0119",
-                "securityCode": "123"
+                "type": @card_data[:type],
+                "cardholderName": @card_data[:cardholderName],
+                "cardNumber": @card_data[:cardNumber],
+                "expirationDate": @card_data[:expirationDate],
+                "securityCode": @card_data[:securityCode]
             }
+        }
+      end
+
+      def build_get_token_body(card_nonce)
+        {
+            cardNonce: card_nonce
         }
       end
     end
