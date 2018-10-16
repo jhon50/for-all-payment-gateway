@@ -1,8 +1,3 @@
-
-lib = File.expand_path("../lib", __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "for/all/payment/gateway/version"
-
 Gem::Specification.new do |spec|
   spec.name          = "for-all-payment-gateway"
   spec.version       = '0.1.1'
