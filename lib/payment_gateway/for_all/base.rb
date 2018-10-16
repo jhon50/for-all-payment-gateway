@@ -9,14 +9,13 @@ module PaymentGateway
       API_URL = 'https://gateway.homolog-interna.4all.com'
 
       def initialize
-        @merchant_key = PaymentGateway::ForAll.configuration.merchant_key
-        raise MerchantKeyNotFound if @merchant_key.blank?
+        raise MerchantKeyNotFound if PaymentGateway::ForAll.configuration.merchant_key
       end
 
       protected
 
       def request(method, url, options={ body: {}, params: {} })
-        options[:body].merge!({'merchantKey': @merchant_key})
+        options[:body].merge!({'merchantKey': PaymentGateway::ForAll.configuration.merchant_key})
         response = HTTP.
             headers('Content-Type' => 'application/json').
             send(method, url, json: options[:body].with_indifferent_access)
