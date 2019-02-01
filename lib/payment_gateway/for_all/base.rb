@@ -9,7 +9,7 @@ module PaymentGateway
       API_URL = 'https://gateway.homolog-interna.4all.com'
 
       def initialize
-        raise MerchantKeyNotFound if PaymentGateway::ForAll.configuration.merchant_key
+        raise MerchantKeyNotFound if PaymentGateway::ForAll.configuration.merchant_key.blank?
       end
 
       protected
