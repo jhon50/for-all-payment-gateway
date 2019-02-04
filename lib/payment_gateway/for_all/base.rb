@@ -6,7 +6,7 @@ module PaymentGateway
       class MerchantKeyNotFound < StandardError; end
       class GatewayError      < StandardError; end
 
-      API_URL = 'https://gateway.homolog-interna.4all.com'
+      API_URL = retrieve_url
 
       def initialize
         raise MerchantKeyNotFound if PaymentGateway::ForAll.configuration.merchant_key.blank?
@@ -30,6 +30,11 @@ module PaymentGateway
       def access_key
         access_key = PaymentGateway::ForAll.configuration.access_key
         access_key.blank? ? Vault.new.request_key : access_key
+      end
+
+      def retrieve_url
+        'https://gateway.homolog-interna.4all.com' if @environment == :development
+        'https://gateway.api.4all.com'             if @environment == :production
       end
     end
   end
