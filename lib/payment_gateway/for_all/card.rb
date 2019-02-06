@@ -25,11 +25,11 @@ module PaymentGateway
       private
 
       def endpoint_nonce
-        API_URL + '/prepareCard'
+        api_url + '/prepareCard'
       end
 
       def endpoint_token
-        API_URL + '/createCardToken'
+        api_url + '/createCardToken'
       end
 
       def build_card_body

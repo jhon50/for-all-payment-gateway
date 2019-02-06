@@ -11,7 +11,7 @@ module PaymentGateway
       private
 
       def endpoint
-        API_URL + '/requestVaultKey'
+        api_url + '/requestVaultKey'
       end
     end
   end

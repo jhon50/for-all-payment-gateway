@@ -6,8 +6,6 @@ module PaymentGateway
       class MerchantKeyNotFound < StandardError; end
       class GatewayError      < StandardError; end
 
-      API_URL = PaymentGateway::ForAll.configuration.environment
-
       def initialize
         raise MerchantKeyNotFound if PaymentGateway::ForAll.configuration.merchant_key.blank?
       end
@@ -25,6 +23,10 @@ module PaymentGateway
           error_message = "#{response.status} - #{response.parse['errors'] || response.parse['message']}"
           raise GatewayError, error_message
         end
+      end
+
+      def api_url
+        PaymentGateway::ForAll.configuration.environment
       end
 
       def access_key

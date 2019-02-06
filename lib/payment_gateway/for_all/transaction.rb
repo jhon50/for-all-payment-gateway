@@ -57,11 +57,11 @@ module PaymentGateway
       private
 
       def endpoint_create
-        API_URL + '/createTransaction'
+        api_url + '/createTransaction'
       end
 
       def endpoint_capture
-        API_URL + '/captureTransaction'
+        api_url + '/captureTransaction'
       end
     end
   end
