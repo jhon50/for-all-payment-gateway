@@ -32,5 +32,5 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency("rspec", "~>3.6")
   spec.add_development_dependency("webmock", "~>3.1")
-  spec.add_development_dependency("pry-byebug", "~>3.5")
+  # spec.add_development_dependency("pry-byebug", "~>3.5")
 end
