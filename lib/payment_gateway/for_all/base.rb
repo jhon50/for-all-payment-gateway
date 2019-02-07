@@ -1,5 +1,4 @@
 require 'http'
-require 'pry-rails'
 module PaymentGateway
   module ForAll
     class Base
