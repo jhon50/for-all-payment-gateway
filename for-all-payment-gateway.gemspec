@@ -1,11 +1,11 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "payment_gateway/version"
+# require "payment_gateway/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "for-all-payment-gateway"
-  spec.version       = PaymentGateway::VERSION
+  spec.version       = '1.0.1'
   spec.authors       = ["Jhonatan Teixeira"]
   spec.email         = ["johnn_lds@hotmail.com"]
 
