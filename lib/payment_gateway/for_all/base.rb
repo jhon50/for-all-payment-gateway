@@ -29,9 +29,8 @@ module PaymentGateway
       end
 
       def access_key
-        Vault.new.request_key
-        # access_key = PaymentGateway::ForAll.configuration.access_key
-        # access_key.blank? ? Vault.new.request_key : access_key
+        access_key = PaymentGateway::ForAll.configuration.access_key
+        access_key.blank? ? Vault.new.request_key : access_key
       end
     end
   end

@@ -19,13 +19,11 @@ module PaymentGateway
     class Configuration
       attr_accessor :public_key
       attr_accessor :merchant_key
-      attr_accessor :access_key
       attr_accessor :environment
 
       def initialize
         @public_key   = nil
         @merchant_key = nil
-        @access_key   = nil
         @environment  = nil
       end
     end
