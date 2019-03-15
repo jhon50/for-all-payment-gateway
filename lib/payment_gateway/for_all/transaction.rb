@@ -10,6 +10,7 @@ module PaymentGateway
       #     "amount": 7500,
       #     "metaId": "random number, token or code",
       #     "overwriteMetaId": false,
+      #     "softDescriptor": "Dr. Zeus Inc.",
       #     "paymentMethod": [
       #       {
       #         "cardNonce": "xxxxxxxxxxxxxxxxx",
@@ -17,7 +18,6 @@ module PaymentGateway
       #         "paymentMode": 1,
       #         "installmentType": 1,
       #         "installments": 1,
-      #         "softDescriptor": "Dr. Zeus Inc.",
       #         "amount": 7500,
       #         "forceSplit": false
       #       }

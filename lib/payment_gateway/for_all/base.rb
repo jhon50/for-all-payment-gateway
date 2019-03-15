@@ -19,7 +19,7 @@ module PaymentGateway
         if response.status.eql?(200)
           response.parse.with_indifferent_access
         else
-          error_message = "#{response.status} - #{response.parse['errors'] || response.parse['message']}"
+          error_message = "#{response.status} - #{response.parse['error']['message']}"
           raise GatewayError, error_message
         end
       end
@@ -29,8 +29,9 @@ module PaymentGateway
       end
 
       def access_key
-        access_key = PaymentGateway::ForAll.configuration.access_key
-        access_key.blank? ? Vault.new.request_key : access_key
+        Vault.new.request_key
+        # access_key = PaymentGateway::ForAll.configuration.access_key
+        # access_key.blank? ? Vault.new.request_key : access_key
       end
     end
   end
